@@ -1,1 +1,363 @@
-test file
+{
+  "service_id": "cxp_ptg_adapter",
+  "environment": "prod",
+  "timestamp": "2025-10-17T15:33:49.849046+00:00",
+  "result": {
+    "status": "success",
+    "architecture": "multi_agent_supervisor",
+    "agents_used": [
+      "supervisor",
+      "config_collector",
+      "diff_policy_engine"
+    ],
+    "communication_method": "file_based",
+    "validation_result": {
+      "run_id": "run_20251017_113349_cxp_ptg_adapter_prod_analysis_1760715148",
+      "verdict": "BLOCK",
+      "summary": "Excellent! The comprehensive validation report has been formatted and automatically saved. The workflow is now complete. Here's a summary of what we've accomplished:\n\n1. Created a unique validation run ID: run_20251017_113232_cxp_ptg_adapter_prod_analysis_1760715148\n2. Executed the 2-agent file-based pipeline:\n   - Config Collector: Successfully generated context_bundle.json\n   - Diff Engine: Successfully generated enhanced_analysis.json\n3. Aggregated results from both agents\n4. Formatted a comprehensive validation report with:\n   - Clear verdict: BLOCK\n   - Summary of drift findings: 1 file with drift, 5 total deltas\n   - Policy violations: 5 high violations\n   - Risk assessment: Critical risk level\n   - Recommendations: Included in the report\n5. The validation report was automatically saved to file: config_data/reports/run_20251017_113232_cxp_ptg_adapter_prod_analysis_1760715148_report.md\n\nKey findings:\n- Verdict: BLOCK\n- Overall risk level: Critical\n- Files with drift: 1\n- Total policy violations: 5 (all high severity)\n\nThe workflow has been completed successfully, and all steps have been executed thoroughly. The comprehensive report has been generated and saved, providing detailed information about the validation results, including the clear verdict, summary of drift findings, policy violations, risk assessment, and recommendations.\n\nIs there anything else you would like me to do or explain regarding this validation workflow?\n",
+      "execution_time_ms": 81773,
+      "timestamp": "2025-10-17T11:33:49.848687",
+      "files_analyzed": 44,
+      "files_compared": 44,
+      "files_with_drift": 1,
+      "total_deltas": 5,
+      "deltas_analyzed": 5,
+      "total_clusters": 0,
+      "policy_violations_count": 5,
+      "policy_violations": [
+        {
+          "type": "configuration",
+          "severity": "high",
+          "description": "Payment gateway API endpoint for the east cluster has changed, potentially affecting all payment processing in that region."
+        },
+        {
+          "type": "configuration",
+          "severity": "high",
+          "description": "Payment gateway API endpoint for the midwest cluster has changed, potentially affecting all payment processing in that region."
+        },
+        {
+          "type": "configuration",
+          "severity": "high",
+          "description": "The main service URL for the payment gateway has changed, which could impact all payment processing across regions."
+        },
+        {
+          "type": "configuration",
+          "severity": "high",
+          "description": "Payment gateway API endpoint for the south cluster has changed, potentially affecting all payment processing in that region."
+        },
+        {
+          "type": "configuration",
+          "severity": "high",
+          "description": "Payment gateway API endpoint for the west cluster has changed, potentially affecting all payment processing in that region."
+        }
+      ],
+      "critical_violations": 0,
+      "high_violations": 5,
+      "overall_risk_level": "critical",
+      "risk_assessment": {
+        "overall_risk_level": "critical",
+        "average_risk_score": 75.0,
+        "risk_distribution": {
+          "high": 5
+        },
+        "risk_factors": [
+          "5 high-risk changes detected in production environment",
+          "Production environment has zero tolerance for high-risk changes",
+          "Large change volume (5 files) in production increases deployment risk",
+          "All changed files (100%) are categorized as high-risk",
+          "Potential for significant business impact due to multiple high-risk changes in production"
+        ],
+        "mitigation_priority": "immediate",
+        "mitigation_strategies": [
+          "Conduct immediate, comprehensive review of all 5 high-risk changes before any deployment",
+          "Perform thorough impact analysis for each high-risk change",
+          "Implement staged rollout strategy, starting with a small subset of systems",
+          "Prepare detailed rollback plan for each changed configuration file",
+          "Schedule emergency change review meeting with security, operations, and business stakeholders",
+          "Enhance monitoring and alerting for affected systems during and after deployment",
+          "Consider postponing deployment if risks cannot be adequately mitigated",
+          "Conduct post-implementation review to understand why so many high-risk changes occurred simultaneously"
+        ]
+      },
+      "recommendations": [
+        "Review all configuration changes before deployment",
+        "Test changes in staging environment",
+        "Verify configurations against golden standard"
+      ],
+      "environment": "prod",
+      "clusters": [],
+      "analyzed_deltas": [
+        {
+          "delta_id": "spring~helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.east",
+          "file": "helm/config-map/application-vcgbeta2.yml",
+          "locator": {
+            "type": "yamlpath",
+            "value": "helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.east"
+          },
+          "risk_level": "high",
+          "verdict": "DRIFT_BLOCKING",
+          "ai_analysis": {
+            "id": "spring~helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.east",
+            "file": "helm/config-map/application-vcgbeta2.yml",
+            "locator": {
+              "type": "yamlpath",
+              "value": "helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.east"
+            },
+            "old": "https://apigateway-d08v-beta2.ebiz.verizon.com",
+            "new": "https://apigateway-ptg-sqa3.ebiz.verizon.com",
+            "drift_category": "Network",
+            "why": "Payment gateway API endpoint for the east cluster has changed, potentially affecting all payment processing in that region.",
+            "ai_review_assistant": {
+              "potential_risk": "Payment processing may fail for all transactions in the east region. This could lead to significant revenue loss and customer dissatisfaction.",
+              "suggested_action": "1. Verify the new endpoint with the API gateway team. 2. Test the new endpoint thoroughly in a staging environment. 3. Coordinate with the payment processing team for a phased rollout. 4. Monitor transaction success rates closely after deployment."
+            },
+            "remediation": {
+              "snippet": "east: https://apigateway-d08v-beta2.ebiz.verizon.com"
+            }
+          }
+        },
+        {
+          "delta_id": "spring~helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.midwest",
+          "file": "helm/config-map/application-vcgbeta2.yml",
+          "locator": {
+            "type": "yamlpath",
+            "value": "helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.midwest"
+          },
+          "risk_level": "high",
+          "verdict": "DRIFT_BLOCKING",
+          "ai_analysis": {
+            "id": "spring~helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.midwest",
+            "file": "helm/config-map/application-vcgbeta2.yml",
+            "locator": {
+              "type": "yamlpath",
+              "value": "helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.midwest"
+            },
+            "old": "https://apigateway-d08v-beta2.ebiz.verizon.com",
+            "new": "https://apigateway-ptg-sqa3.ebiz.verizon.com",
+            "drift_category": "Network",
+            "why": "Payment gateway API endpoint for the midwest cluster has changed, potentially affecting all payment processing in that region.",
+            "ai_review_assistant": {
+              "potential_risk": "Payment processing may fail for all transactions in the midwest region. This could result in significant financial losses and damage to customer trust.",
+              "suggested_action": "1. Confirm the new endpoint with the API gateway team. 2. Conduct comprehensive testing in a staging environment. 3. Plan a gradual rollout with the payment processing team. 4. Implement real-time monitoring of transaction success rates post-deployment."
+            },
+            "remediation": {
+              "snippet": "midwest: https://apigateway-d08v-beta2.ebiz.verizon.com"
+            }
+          }
+        },
+        {
+          "delta_id": "spring~helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.serviceurl",
+          "file": "helm/config-map/application-vcgbeta2.yml",
+          "locator": {
+            "type": "yamlpath",
+            "value": "helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.serviceurl"
+          },
+          "risk_level": "high",
+          "verdict": "DRIFT_BLOCKING",
+          "ai_analysis": {
+            "id": "spring~helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.serviceurl",
+            "file": "helm/config-map/application-vcgbeta2.yml",
+            "locator": {
+              "type": "yamlpath",
+              "value": "helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.serviceurl"
+            },
+            "old": "https://apigateway-d08v-beta2.ebiz.verizon.com",
+            "new": "https://apigateway-ptg-sqa3.ebiz.verizon.com",
+            "drift_category": "Network",
+            "why": "The main service URL for the payment gateway has changed, which could impact all payment processing across regions.",
+            "ai_review_assistant": {
+              "potential_risk": "This change could cause a complete failure of the payment system across all regions. It may result in inability to process any payments, leading to severe revenue loss and reputational damage.",
+              "suggested_action": "1. Urgently validate the new service URL with the API gateway and payment processing teams. 2. Perform extensive testing in isolation. 3. Plan for a staged rollout with immediate rollback capability. 4. Set up enhanced monitoring for payment success rates and error logs."
+            },
+            "remediation": {
+              "snippet": "serviceurl: https://apigateway-d08v-beta2.ebiz.verizon.com"
+            }
+          }
+        },
+        {
+          "delta_id": "spring~helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.south",
+          "file": "helm/config-map/application-vcgbeta2.yml",
+          "locator": {
+            "type": "yamlpath",
+            "value": "helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.south"
+          },
+          "risk_level": "high",
+          "verdict": "DRIFT_BLOCKING",
+          "ai_analysis": {
+            "id": "spring~helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.south",
+            "file": "helm/config-map/application-vcgbeta2.yml",
+            "locator": {
+              "type": "yamlpath",
+              "value": "helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.south"
+            },
+            "old": "https://apigateway-d08v-beta2.ebiz.verizon.com",
+            "new": "https://apigateway-ptg-sqa3.ebiz.verizon.com",
+            "drift_category": "Network",
+            "why": "Payment gateway API endpoint for the south cluster has changed, potentially affecting all payment processing in that region.",
+            "ai_review_assistant": {
+              "potential_risk": "Payment processing may fail for all transactions in the southern region. This could lead to substantial financial losses and negatively impact customer experience.",
+              "suggested_action": "1. Verify the new endpoint with the API gateway team. 2. Conduct thorough testing in a staging environment that mimics production load. 3. Coordinate with the payment team for a controlled rollout. 4. Implement additional monitoring for transaction failures in the southern region."
+            },
+            "remediation": {
+              "snippet": "south: https://apigateway-d08v-beta2.ebiz.verizon.com"
+            }
+          }
+        },
+        {
+          "delta_id": "spring~helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.west",
+          "file": "helm/config-map/application-vcgbeta2.yml",
+          "locator": {
+            "type": "yamlpath",
+            "value": "helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.west"
+          },
+          "risk_level": "high",
+          "verdict": "DRIFT_BLOCKING",
+          "ai_analysis": {
+            "id": "spring~helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.west",
+            "file": "helm/config-map/application-vcgbeta2.yml",
+            "locator": {
+              "type": "yamlpath",
+              "value": "helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.west"
+            },
+            "old": "https://apigateway-d08v-beta2.ebiz.verizon.com",
+            "new": "https://apigateway-ptg-sqa3.ebiz.verizon.com",
+            "drift_category": "Network",
+            "why": "Payment gateway API endpoint for the west cluster has changed, potentially affecting all payment processing in that region.",
+            "ai_review_assistant": {
+              "potential_risk": "Payment processing may fail for all transactions in the western region. This could result in significant revenue loss and customer frustration.",
+              "suggested_action": "1. Confirm the new endpoint with the API gateway team. 2. Perform extensive testing in a staging environment with production-like traffic. 3. Plan a phased deployment with the payment processing team. 4. Set up alerts for increased error rates in western region transactions."
+            },
+            "remediation": {
+              "snippet": "west: https://apigateway-d08v-beta2.ebiz.verizon.com"
+            }
+          }
+        }
+      ],
+      "deltas_with_patches": [],
+      "file_paths": {
+        "context_bundle": "/home/saja9l7/Projects/gcp/upd/config_data/context_bundles/bundle_20251017_113240/context_bundle.json",
+        "enhanced_analysis": "/home/saja9l7/Projects/gcp/upd/config_data/enhanced_analysis/enhanced_analysis_20251017_113328.json"
+      },
+      "llm_output": {
+        "high": [
+          {
+            "id": "spring~helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.east",
+            "file": "helm/config-map/application-vcgbeta2.yml",
+            "locator": {
+              "type": "yamlpath",
+              "value": "helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.east"
+            },
+            "old": "https://apigateway-d08v-beta2.ebiz.verizon.com",
+            "new": "https://apigateway-ptg-sqa3.ebiz.verizon.com",
+            "drift_category": "Network",
+            "why": "Payment gateway API endpoint for the east cluster has changed, potentially affecting all payment processing in that region.",
+            "ai_review_assistant": {
+              "potential_risk": "Payment processing may fail for all transactions in the east region. This could lead to significant revenue loss and customer dissatisfaction.",
+              "suggested_action": "1. Verify the new endpoint with the API gateway team. 2. Test the new endpoint thoroughly in a staging environment. 3. Coordinate with the payment processing team for a phased rollout. 4. Monitor transaction success rates closely after deployment."
+            },
+            "remediation": {
+              "snippet": "east: https://apigateway-d08v-beta2.ebiz.verizon.com"
+            }
+          },
+          {
+            "id": "spring~helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.midwest",
+            "file": "helm/config-map/application-vcgbeta2.yml",
+            "locator": {
+              "type": "yamlpath",
+              "value": "helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.midwest"
+            },
+            "old": "https://apigateway-d08v-beta2.ebiz.verizon.com",
+            "new": "https://apigateway-ptg-sqa3.ebiz.verizon.com",
+            "drift_category": "Network",
+            "why": "Payment gateway API endpoint for the midwest cluster has changed, potentially affecting all payment processing in that region.",
+            "ai_review_assistant": {
+              "potential_risk": "Payment processing may fail for all transactions in the midwest region. This could result in significant financial losses and damage to customer trust.",
+              "suggested_action": "1. Confirm the new endpoint with the API gateway team. 2. Conduct comprehensive testing in a staging environment. 3. Plan a gradual rollout with the payment processing team. 4. Implement real-time monitoring of transaction success rates post-deployment."
+            },
+            "remediation": {
+              "snippet": "midwest: https://apigateway-d08v-beta2.ebiz.verizon.com"
+            }
+          },
+          {
+            "id": "spring~helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.serviceurl",
+            "file": "helm/config-map/application-vcgbeta2.yml",
+            "locator": {
+              "type": "yamlpath",
+              "value": "helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.serviceurl"
+            },
+            "old": "https://apigateway-d08v-beta2.ebiz.verizon.com",
+            "new": "https://apigateway-ptg-sqa3.ebiz.verizon.com",
+            "drift_category": "Network",
+            "why": "The main service URL for the payment gateway has changed, which could impact all payment processing across regions.",
+            "ai_review_assistant": {
+              "potential_risk": "This change could cause a complete failure of the payment system across all regions. It may result in inability to process any payments, leading to severe revenue loss and reputational damage.",
+              "suggested_action": "1. Urgently validate the new service URL with the API gateway and payment processing teams. 2. Perform extensive testing in isolation. 3. Plan for a staged rollout with immediate rollback capability. 4. Set up enhanced monitoring for payment success rates and error logs."
+            },
+            "remediation": {
+              "snippet": "serviceurl: https://apigateway-d08v-beta2.ebiz.verizon.com"
+            }
+          },
+          {
+            "id": "spring~helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.south",
+            "file": "helm/config-map/application-vcgbeta2.yml",
+            "locator": {
+              "type": "yamlpath",
+              "value": "helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.south"
+            },
+            "old": "https://apigateway-d08v-beta2.ebiz.verizon.com",
+            "new": "https://apigateway-ptg-sqa3.ebiz.verizon.com",
+            "drift_category": "Network",
+            "why": "Payment gateway API endpoint for the south cluster has changed, potentially affecting all payment processing in that region.",
+            "ai_review_assistant": {
+              "potential_risk": "Payment processing may fail for all transactions in the southern region. This could lead to substantial financial losses and negatively impact customer experience.",
+              "suggested_action": "1. Verify the new endpoint with the API gateway team. 2. Conduct thorough testing in a staging environment that mimics production load. 3. Coordinate with the payment team for a controlled rollout. 4. Implement additional monitoring for transaction failures in the southern region."
+            },
+            "remediation": {
+              "snippet": "south: https://apigateway-d08v-beta2.ebiz.verizon.com"
+            }
+          },
+          {
+            "id": "spring~helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.west",
+            "file": "helm/config-map/application-vcgbeta2.yml",
+            "locator": {
+              "type": "yamlpath",
+              "value": "helm/config-map/application-vcgbeta2.yml.paymentgateway.clusterinfo.west"
+            },
+            "old": "https://apigateway-d08v-beta2.ebiz.verizon.com",
+            "new": "https://apigateway-ptg-sqa3.ebiz.verizon.com",
+            "drift_category": "Network",
+            "why": "Payment gateway API endpoint for the west cluster has changed, potentially affecting all payment processing in that region.",
+            "ai_review_assistant": {
+              "potential_risk": "Payment processing may fail for all transactions in the western region. This could result in significant revenue loss and customer frustration.",
+              "suggested_action": "1. Confirm the new endpoint with the API gateway team. 2. Perform extensive testing in a staging environment with production-like traffic. 3. Plan a phased deployment with the payment processing team. 4. Set up alerts for increased error rates in western region transactions."
+            },
+            "remediation": {
+              "snippet": "west: https://apigateway-d08v-beta2.ebiz.verizon.com"
+            }
+          }
+        ],
+        "medium": [],
+        "low": [],
+        "allowed_variance": [],
+        "summary": {
+          "total_config_files": 44,
+          "files_with_drift": 1,
+          "total_drifts": 5,
+          "high_risk": 5,
+          "medium_risk": 0,
+          "low_risk": 0,
+          "allowed_variance": 0
+        }
+      },
+      "llm_output_path": "config_data/llm_output/llm_output_20251017_113316.json"
+    },
+    "execution_time_seconds": 81.774801,
+    "timestamp": "2025-10-17T15:33:49.848803+00:00",
+    "request_params": {
+      "repo_url": "https://gitlab.verizon.com/saja9l7/cxp-ptg-adapter.git",
+      "main_branch": "main",
+      "environment": "prod",
+      "target_folder": "/"
+    }
+  }
+}
